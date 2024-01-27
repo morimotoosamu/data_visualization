@@ -11,7 +11,7 @@
 
 <meta name="author" content="Osamu, MORIMOTO" />
 
-<meta name="date" content="2024-01-17" />
+<meta name="date" content="2024-01-27" />
 
 <title>はじめに</title>
 
@@ -2837,7 +2837,7 @@ border-radius: 0px;
 
 <h1 class="title toc-ignore">はじめに</h1>
 <h4 class="author">Osamu, MORIMOTO</h4>
-<h4 class="date">2024-01-17</h4>
+<h4 class="date">2024-01-27</h4>
 
 </div>
 
@@ -2845,12 +2845,33 @@ border-radius: 0px;
 <div id="はじめに" class="section level2">
 <h2>はじめに</h2>
 <p>このドキュメントは『<a href="https://www.socym.co.jp/book/1444">指標・特徴量の設計から始めるデータ可視化学入門</a>』で提供されている<a href="https://github.com/tkEzaki/data_visualization/tree/main">Pythonによる可視化コード</a>を<a href="https://www.r-project.org/">R言語</a>で書き直したものです。</p>
-<p>また、<a href="https://github.com/minoue-xx/MATLAB-example-for-An-Introduction-to-Data-Visualization">MATLAB版</a>も公開されています。</p>
 <p>ただし、Pythonのコードの直訳・逐語訳ではなくRらしい書き方・表現へ意訳しています。</p>
-<p>また、以下の方針を取っています。</p>
+<p>以下が各章ごとのドキュメントです。</p>
+<p>2023年2月時点で第8章まで完成。</p>
+<ul>
+<li>第1章 <a href="chapter1.html">データ可視化の本質</a></li>
+<li>第2章 <a href="chapter2.html">数量を把握するデータ可視化</a></li>
+<li>第3章 <a href="chapter3.html">メカニズムをとらえるデータ可視化</a></li>
+<li>第4章 <a href="chapter4.html">多変数をとらえるデータ可視化</a></li>
+<li>第5章 <a href="chapter5.html">データの分布をとらえる指標化</a></li>
+<li>第6章 <a href="chapter6.html">関係性をとらえる指標化</a></li>
+<li>第7章 <a href="chapter7.html">パターンをとらえる指標化</a></li>
+<li>第8章 <a href="chapter8.html">データ指標化・可視化のプロセス</a></li>
+</ul>
+<p><a href="https://github.com/minoue-xx/MATLAB-example-for-An-Introduction-to-Data-Visualization">MATLAB版</a>も公開されています。</p>
+<p>以下の方針を取っています。</p>
 <ul>
 <li>書籍とPythonのコードで微妙に異なる箇所は、極力書籍に合わせる。</li>
-<li>配色の再現は目指さない。ggplot2のデフォルトを基本とする。</li>
+<li>配色の再現は目指さない。
+<ul>
+<li>jetカラーのグラデーションは<a href="https://github.com/sjmgarnier/viridisLite/">viridisLite</a>パッケージの<a href="https://blog.research.google/2019/08/turbo-improved-rainbow-colormap-for.html">Turboカラーセット</a>で置き換える。</li>
+<li>その他はDark2, Paired, Pastel2, Set2などのカラーパレットから選ぶ。
+<ul>
+<li>色名はpalette.colors(palette = “Dark2”)などで確認</li>
+<li>ggplot2であればscale_colour_viridis_d(option =
+“turbo”)などとして指定</li>
+</ul></li>
+</ul></li>
 <li>画像ファイルとして出力する部分とフォントサイズの指定は省略。</li>
 <li>各グラフのコードのみをコピペで動かせるようにいちいち必要なlibraryを呼んでます。</li>
 <li><code>conflicted</code>と<code>tidyverse</code>の両パッケージは必要の有無に限らず必ず呼び出しています。</li>
@@ -2862,31 +2883,20 @@ border-radius: 0px;
 </ul>
 <p>以下の点がまだうまく再現できていません。再現する方法があればお知らせください。</p>
 <ul>
-<li><del>1.2.3
-エッジが張られていないノードがネットワーク図で消えてしまう。</del></li>
 <li>1.3.4
 「分布の裾の様子」の図はよく理解できなかったので描いていません。</li>
-<li><del>4.1.1 レーダーチャートがキレイに描けない。</del></li>
 <li>4.2.6 画像とネットワーク図を重ねる方法が分からないので割愛。</li>
-<li>4.3.7 4.3.8
+<li>4.3.7, 4.3.8
 隠れマルコフモデルによる時系列クラスタリングが分からないので割愛。</li>
+<li>7.1.3 7.1.4 音声データの取り扱いの知見が無いので割愛</li>
+<li>7.1.5 心電図データの取り扱いの知見が無いので割愛</li>
+<li>7.2.1 最大距離を制限した場合の各領域の面積の出し方が分からない</li>
+<li>7.2.3 画像の取り扱いの知見がないので割愛</li>
 </ul>
 <p>まちがっている個所やもっと良い書き方があればX(旧Twitter)の<a href="https://twitter.com/bob3bob3">私のアカウント</a>までお知らせください。</p>
-<p>以下が各章ごとのドキュメントです。</p>
-<p>2023年1月時点で第4章まで完成しています。</p>
-<ul>
-<li>第1章 <a href="chapter1.html">データ可視化の本質</a></li>
-<li>第2章 <a href="chapter2.html">数量を把握するデータ可視化</a></li>
-<li>第3章 <a href="chapter3.html">メカニズムをとらえるデータ可視化</a></li>
-<li>第4章 <a href="chapter4.html">多変数をとらえるデータ可視化</a></li>
-<li>第5章 <a href="chapter5.html">データの分布をとらえる指標化</a></li>
-<li>第6章 <a href="chapter6.html">関係性をとらえる指標化</a></li>
-<li>第7章 パターンをとらえる指標化</li>
-<li>第8章 データ指標化・可視化のプロセス</li>
-</ul>
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAi44Gv44GY44KB44GrIgphdXRob3I6ICJPc2FtdSwgTU9SSU1PVE8iCmRhdGU6ICJgciBTeXMuRGF0ZSgpYCIKb3V0cHV0OgogIGh0bWxfZG9jdW1lbnQ6IAogICAgY29kZV9kb3dubG9hZDogdHJ1ZQogICAgdG9jOiB5ZXMKICAgIHRvY19kZXB0aDogMwogICAgdGhlbWU6IHVuaXRlZCAgICAKICAgIG1kX2V4dGVuc2lvbnM6ICItYXNjaWlfaWRlbnRpZmllcnMiCiAgICB0b2NfZmxvYXQ6IHllcwogICAgZmlnX3dpZHRoOiA3LjUKICAgIGZpZ19oZWlnaHQ6IDUuNjI1CiAgICBkZXY6IHJhZ2dfcG5nCiAgICBoaWdobGlnaHQ6IHRhbmdvCiAgICBjb2RlX2ZvbGRpbmc6IGhpZGUKICAgIGRmX3ByaW50OiBwYWdlZAotLS0KCmBgYHtyIHNldHVwLCBpbmNsdWRlPUZBTFNFfQprbml0cjo6b3B0c19jaHVuayRzZXQoZWNobyA9IFRSVUUpCmBgYAoKIyMg44Gv44GY44KB44GrCgrjgZPjga7jg4njgq3jg6Xjg6Hjg7Pjg4jjga/jgI5b5oyH5qiZ44O754m55b606YeP44Gu6Kit6KiI44GL44KJ5aeL44KB44KL44OH44O844K/5Y+v6KaW5YyW5a2m5YWl6ZaAXShodHRwczovL3d3dy5zb2N5bS5jby5qcC9ib29rLzE0NDQp44CP44Gn5o+Q5L6b44GV44KM44Gm44GE44KLW1B5dGhvbuOBq+OCiOOCi+WPr+imluWMluOCs+ODvOODiV0oaHR0cHM6Ly9naXRodWIuY29tL3RrRXpha2kvZGF0YV92aXN1YWxpemF0aW9uL3RyZWUvbWFpbinjgpJbUuiogOiqnl0oaHR0cHM6Ly93d3cuci1wcm9qZWN0Lm9yZy8p44Gn5pu444GN55u044GX44Gf44KC44Gu44Gn44GZ44CCCgrjgb7jgZ/jgIFbTUFUTEFC54mIXShodHRwczovL2dpdGh1Yi5jb20vbWlub3VlLXh4L01BVExBQi1leGFtcGxlLWZvci1Bbi1JbnRyb2R1Y3Rpb24tdG8tRGF0YS1WaXN1YWxpemF0aW9uKeOCguWFrOmWi+OBleOCjOOBpuOBhOOBvuOBmeOAggoK44Gf44Gg44GX44CBUHl0aG9u44Gu44Kz44O844OJ44Gu55u06Kiz44O76YCQ6Kqe6Kiz44Gn44Gv44Gq44GPUuOCieOBl+OBhOabuOOBjeaWueODu+ihqOePvuOBuOaEj+ios+OBl+OBpuOBhOOBvuOBmeOAggoK44G+44Gf44CB5Lul5LiL44Gu5pa56Yed44KS5Y+W44Gj44Gm44GE44G+44GZ44CCCgotICAg5pu457GN44GoUHl0aG9u44Gu44Kz44O844OJ44Gn5b6u5aaZ44Gr55Ww44Gq44KL566H5omA44Gv44CB5qW15Yqb5pu457GN44Gr5ZCI44KP44Gb44KL44CCCi0gICDphY3oibLjga7lho3nj77jga/nm67mjIfjgZXjgarjgYTjgIJnZ3Bsb3Qy44Gu44OH44OV44Kp44Or44OI44KS5Z+65pys44Go44GZ44KL44CCIAotICAg55S75YOP44OV44Kh44Kk44Or44Go44GX44Gm5Ye65Yqb44GZ44KL6YOo5YiG44Go44OV44Kp44Oz44OI44K144Kk44K644Gu5oyH5a6a44Gv55yB55Wl44CCCi0gICDlkITjgrDjg6njg5Xjga7jgrPjg7zjg4njga7jgb/jgpLjgrPjg5Tjg5rjgafli5XjgYvjgZvjgovjgojjgYbjgavjgYTjgaHjgYTjgaHlv4XopoHjgapsaWJyYXJ544KS5ZG844KT44Gn44G+44GZ44CCCi0gICBgY29uZmxpY3RlZGDjgahgdGlkeXZlcnNlYOOBruS4oeODkeODg+OCseODvOOCuOOBr+W/heimgeOBruacieeEoeOBq+mZkOOCieOBmuW/heOBmuWRvOOBs+WHuuOBl+OBpuOBhOOBvuOBmeOAggotICAg5b+F6KaB44Gq44OR44OD44Kx44O844K444Gv6ZqP5pmC44Kk44Oz44K544OI44O844Or44GX44Gm44GP44Gg44GV44GE44CCCiAgICAtICAg77yI5b6M44Gn5LiA5ous44Kk44Oz44K544OI44O844Or44Gu44Kz44O844OJ44KS6L+95Yqg44GZ44KL77yJCi0gICDlibLmhJvjgZfjgZ/jgoLjga7jgoLkuIDpg6jjgYLjgorjgb7jgZnjgIIKCuS7peS4i+OBrueCueOBjOOBvuOBoOOBhuOBvuOBj+WGjeePvuOBp+OBjeOBpuOBhOOBvuOBm+OCk+OAguWGjeePvuOBmeOCi+aWueazleOBjOOBguOCjOOBsOOBiuefpeOCieOBm+OBj+OBoOOBleOBhOOAggoKLSAgIH5+MS4yLjMg44Ko44OD44K444GM5by144KJ44KM44Gm44GE44Gq44GE44OO44O844OJ44GM44ON44OD44OI44Ov44O844Kv5Zuz44Gn5raI44GI44Gm44GX44G+44GG44CCfn4KLSAgIDEuMy40IOOAjOWIhuW4g+OBruijvuOBruanmOWtkOOAjeOBruWbs+OBr+OCiOOBj+eQhuino+OBp+OBjeOBquOBi+OBo+OBn+OBruOBp+aPj+OBhOOBpuOBhOOBvuOBm+OCk+OAggotICAgfn40LjEuMSDjg6zjg7zjg4Djg7zjg4Hjg6Pjg7zjg4jjgYzjgq3jg6zjgqTjgavmj4/jgZHjgarjgYTjgIJ+fgotICAgNC4yLjYg55S75YOP44Go44ON44OD44OI44Ov44O844Kv5Zuz44KS6YeN44Gt44KL5pa55rOV44GM5YiG44GL44KJ44Gq44GE44Gu44Gn5Ymy5oSb44CCCi0gICA0LjMuNyA0LjMuOCDpmqDjgozjg57jg6vjgrPjg5Xjg6Ljg4fjg6vjgavjgojjgovmmYLns7vliJfjgq/jg6njgrnjgr/jg6rjg7PjgrDjgYzliIbjgYvjgonjgarjgYTjga7jgaflibLmhJvjgIIKCuOBvuOBoeOBjOOBo+OBpuOBhOOCi+WAi+aJgOOChOOCguOBo+OBqOiJr+OBhOabuOOBjeaWueOBjOOBguOCjOOBsFgo5penVHdpdHRlcinjga5b56eB44Gu44Ki44Kr44Km44Oz44OIXShodHRwczovL3R3aXR0ZXIuY29tL2JvYjNib2IzKeOBvuOBp+OBiuefpeOCieOBm+OBj+OBoOOBleOBhOOAggoK5Lul5LiL44GM5ZCE56ug44GU44Go44Gu44OJ44Kt44Ol44Oh44Oz44OI44Gn44GZ44CCCgoyMDIz5bm0MeaciOaZgueCueOBp+esrDTnq6Djgb7jgaflrozmiJDjgZfjgabjgYTjgb7jgZnjgIIKCi0gICDnrKwx56ugIFvjg4fjg7zjgr/lj6/oppbljJbjga7mnKzos6pdKGNoYXB0ZXIxLmh0bWwpCi0gICDnrKwy56ugIFvmlbDph4/jgpLmiormj6HjgZnjgovjg4fjg7zjgr/lj6/oppbljJZdKGNoYXB0ZXIyLmh0bWwpCi0gICDnrKwz56ugIFvjg6Hjgqvjg4vjgrrjg6DjgpLjgajjgonjgYjjgovjg4fjg7zjgr/lj6/oppbljJZdKGNoYXB0ZXIzLmh0bWwpCi0gICDnrKw056ugIFvlpJrlpInmlbDjgpLjgajjgonjgYjjgovjg4fjg7zjgr/lj6/oppbljJZdKGNoYXB0ZXI0Lmh0bWwpCi0gICDnrKw156ugIFvjg4fjg7zjgr/jga7liIbluIPjgpLjgajjgonjgYjjgovmjIfmqJnljJZdKGNoYXB0ZXI1Lmh0bWwpCi0gICDnrKw256ugIFvplqLkv4LmgKfjgpLjgajjgonjgYjjgovmjIfmqJnljJZdKGNoYXB0ZXI2Lmh0bWwpCi0gICDnrKw356ugIOODkeOCv+ODvOODs+OCkuOBqOOCieOBiOOCi+aMh+aomeWMlgotICAg56ysOOeroCDjg4fjg7zjgr/mjIfmqJnljJbjg7vlj6/oppbljJbjga7jg5fjg63jgrvjgrkK</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAi44Gv44GY44KB44GrIgphdXRob3I6ICJPc2FtdSwgTU9SSU1PVE8iCmRhdGU6ICJgciBTeXMuRGF0ZSgpYCIKb3V0cHV0OgogIGh0bWxfZG9jdW1lbnQ6IAogICAgY29kZV9kb3dubG9hZDogdHJ1ZQogICAgdG9jOiB5ZXMKICAgIHRvY19kZXB0aDogMwogICAgdGhlbWU6IHVuaXRlZCAgICAKICAgIG1kX2V4dGVuc2lvbnM6ICItYXNjaWlfaWRlbnRpZmllcnMiCiAgICB0b2NfZmxvYXQ6IHllcwogICAgZmlnX3dpZHRoOiA3LjUKICAgIGZpZ19oZWlnaHQ6IDUuNjI1CiAgICBkZXY6IHJhZ2dfcG5nCiAgICBoaWdobGlnaHQ6IHRhbmdvCiAgICBjb2RlX2ZvbGRpbmc6IGhpZGUKICAgIGRmX3ByaW50OiBwYWdlZAotLS0KCmBgYHtyIHNldHVwLCBpbmNsdWRlPUZBTFNFfQprbml0cjo6b3B0c19jaHVuayRzZXQoZWNobyA9IFRSVUUpCmBgYAoKIyMg44Gv44GY44KB44GrCgrjgZPjga7jg4njgq3jg6Xjg6Hjg7Pjg4jjga/jgI5b5oyH5qiZ44O754m55b606YeP44Gu6Kit6KiI44GL44KJ5aeL44KB44KL44OH44O844K/5Y+v6KaW5YyW5a2m5YWl6ZaAXShodHRwczovL3d3dy5zb2N5bS5jby5qcC9ib29rLzE0NDQp44CP44Gn5o+Q5L6b44GV44KM44Gm44GE44KLW1B5dGhvbuOBq+OCiOOCi+WPr+imluWMluOCs+ODvOODiV0oaHR0cHM6Ly9naXRodWIuY29tL3RrRXpha2kvZGF0YV92aXN1YWxpemF0aW9uL3RyZWUvbWFpbinjgpJbUuiogOiqnl0oaHR0cHM6Ly93d3cuci1wcm9qZWN0Lm9yZy8p44Gn5pu444GN55u044GX44Gf44KC44Gu44Gn44GZ44CCCgrjgZ/jgaDjgZfjgIFQeXRob27jga7jgrPjg7zjg4njga7nm7ToqLPjg7vpgJDoqp7oqLPjgafjga/jgarjgY9S44KJ44GX44GE5pu444GN5pa544O76KGo54++44G45oSP6Kiz44GX44Gm44GE44G+44GZ44CCCgrku6XkuIvjgYzlkITnq6DjgZTjgajjga7jg4njgq3jg6Xjg6Hjg7Pjg4jjgafjgZnjgIIKCjIwMjPlubQy5pyI5pmC54K544Gn56ysOOeroOOBvuOBp+WujOaIkOOAggoKLSAgIOesrDHnq6AgW+ODh+ODvOOCv+WPr+imluWMluOBruacrOizql0oY2hhcHRlcjEuaHRtbCkKLSAgIOesrDLnq6AgW+aVsOmHj+OCkuaKiuaPoeOBmeOCi+ODh+ODvOOCv+WPr+imluWMll0oY2hhcHRlcjIuaHRtbCkKLSAgIOesrDPnq6AgW+ODoeOCq+ODi+OCuuODoOOCkuOBqOOCieOBiOOCi+ODh+ODvOOCv+WPr+imluWMll0oY2hhcHRlcjMuaHRtbCkKLSAgIOesrDTnq6AgW+WkmuWkieaVsOOCkuOBqOOCieOBiOOCi+ODh+ODvOOCv+WPr+imluWMll0oY2hhcHRlcjQuaHRtbCkKLSAgIOesrDXnq6AgW+ODh+ODvOOCv+OBruWIhuW4g+OCkuOBqOOCieOBiOOCi+aMh+aomeWMll0oY2hhcHRlcjUuaHRtbCkKLSAgIOesrDbnq6AgW+mWouS/guaAp+OCkuOBqOOCieOBiOOCi+aMh+aomeWMll0oY2hhcHRlcjYuaHRtbCkKLSAgIOesrDfnq6AgW+ODkeOCv+ODvOODs+OCkuOBqOOCieOBiOOCi+aMh+aomeWMll0oY2hhcHRlcjcuaHRtbCkKLSAgIOesrDjnq6AgW+ODh+ODvOOCv+aMh+aomeWMluODu+WPr+imluWMluOBruODl+ODreOCu+OCuV0oY2hhcHRlcjguaHRtbCkKCgpbTUFUTEFC54mIXShodHRwczovL2dpdGh1Yi5jb20vbWlub3VlLXh4L01BVExBQi1leGFtcGxlLWZvci1Bbi1JbnRyb2R1Y3Rpb24tdG8tRGF0YS1WaXN1YWxpemF0aW9uKeOCguWFrOmWi+OBleOCjOOBpuOBhOOBvuOBmeOAggoKCuS7peS4i+OBruaWuemHneOCkuWPluOBo+OBpuOBhOOBvuOBmeOAggoKLSAgIOabuOexjeOBqFB5dGhvbuOBruOCs+ODvOODieOBp+W+ruWmmeOBq+eVsOOBquOCi+euh+aJgOOBr+OAgealteWKm+abuOexjeOBq+WQiOOCj+OBm+OCi+OAggotICAg6YWN6Imy44Gu5YaN54++44Gv55uu5oyH44GV44Gq44GE44CCCiAgICAtIGpldOOCq+ODqeODvOOBruOCsOODqeODh+ODvOOCt+ODp+ODs+OBr1t2aXJpZGlzTGl0ZV0oaHR0cHM6Ly9naXRodWIuY29tL3NqbWdhcm5pZXIvdmlyaWRpc0xpdGUvKeODkeODg+OCseODvOOCuOOBrltUdXJib+OCq+ODqeODvOOCu+ODg+ODiF0oaHR0cHM6Ly9ibG9nLnJlc2VhcmNoLmdvb2dsZS8yMDE5LzA4L3R1cmJvLWltcHJvdmVkLXJhaW5ib3ctY29sb3JtYXAtZm9yLmh0bWwp44Gn572u44GN5o+b44GI44KL44CCCiAgICAtIOOBneOBruS7luOBr0RhcmsyLCBQYWlyZWQsIFBhc3RlbDIsIFNldDLjgarjganjga7jgqvjg6njg7zjg5Hjg6zjg4Pjg4jjgYvjgonpgbjjgbbjgIIKICAgICAgIC0g6Imy5ZCN44GvcGFsZXR0ZS5jb2xvcnMocGFsZXR0ZSA9ICJEYXJrMiIp44Gq44Gp44Gn56K66KqNCiAgICAgICAtIGdncGxvdDLjgafjgYLjgozjgbBzY2FsZV9jb2xvdXJfdmlyaWRpc19kKG9wdGlvbiA9ICJ0dXJibyIp44Gq44Gp44Go44GX44Gm5oyH5a6aCi0gICDnlLvlg4/jg5XjgqHjgqTjg6vjgajjgZfjgablh7rlipvjgZnjgovpg6jliIbjgajjg5Xjgqnjg7Pjg4jjgrXjgqTjgrrjga7mjIflrprjga/nnIHnlaXjgIIKLSAgIOWQhOOCsOODqeODleOBruOCs+ODvOODieOBruOBv+OCkuOCs+ODlOODmuOBp+WLleOBi+OBm+OCi+OCiOOBhuOBq+OBhOOBoeOBhOOBoeW/heimgeOBqmxpYnJhcnnjgpLlkbzjgpPjgafjgb7jgZnjgIIKLSAgIGBjb25mbGljdGVkYOOBqGB0aWR5dmVyc2Vg44Gu5Lih44OR44OD44Kx44O844K444Gv5b+F6KaB44Gu5pyJ54Sh44Gr6ZmQ44KJ44Ga5b+F44Ga5ZG844Gz5Ye644GX44Gm44GE44G+44GZ44CCCi0gICDlv4XopoHjgarjg5Hjg4PjgrHjg7zjgrjjga/pmo/mmYLjgqTjg7Pjgrnjg4jjg7zjg6vjgZfjgabjgY/jgaDjgZXjgYTjgIIKICAgIC0gICDvvIjlvozjgafkuIDmi6zjgqTjg7Pjgrnjg4jjg7zjg6vjga7jgrPjg7zjg4njgpLov73liqDjgZnjgovvvIkKLSAgIOWJsuaEm+OBl+OBn+OCguOBruOCguS4gOmDqOOBguOCiuOBvuOBmeOAggoKCuS7peS4i+OBrueCueOBjOOBvuOBoOOBhuOBvuOBj+WGjeePvuOBp+OBjeOBpuOBhOOBvuOBm+OCk+OAguWGjeePvuOBmeOCi+aWueazleOBjOOBguOCjOOBsOOBiuefpeOCieOBm+OBj+OBoOOBleOBhOOAggoKLSAgIDEuMy40IOOAjOWIhuW4g+OBruijvuOBruanmOWtkOOAjeOBruWbs+OBr+OCiOOBj+eQhuino+OBp+OBjeOBquOBi+OBo+OBn+OBruOBp+aPj+OBhOOBpuOBhOOBvuOBm+OCk+OAggotICAgNC4yLjYg55S75YOP44Go44ON44OD44OI44Ov44O844Kv5Zuz44KS6YeN44Gt44KL5pa55rOV44GM5YiG44GL44KJ44Gq44GE44Gu44Gn5Ymy5oSb44CCCi0gICA0LjMuNywgNC4zLjgg6Zqg44KM44Oe44Or44Kz44OV44Oi44OH44Or44Gr44KI44KL5pmC57O75YiX44Kv44Op44K544K/44Oq44Oz44Kw44GM5YiG44GL44KJ44Gq44GE44Gu44Gn5Ymy5oSb44CCCi0gICA3LjEuMyA3LjEuNCDpn7Plo7Djg4fjg7zjgr/jga7lj5bjgormibHjgYTjga7nn6XopovjgYznhKHjgYTjga7jgaflibLmhJsKLSAgIDcuMS41IOW/g+mbu+Wbs+ODh+ODvOOCv+OBruWPluOCiuaJseOBhOOBruefpeimi+OBjOeEoeOBhOOBruOBp+WJsuaEmwotICAgNy4yLjEg5pyA5aSn6Led6Zui44KS5Yi26ZmQ44GX44Gf5aC05ZCI44Gu5ZCE6aCY5Z+f44Gu6Z2i56mN44Gu5Ye644GX5pa544GM5YiG44GL44KJ44Gq44GECi0gICA3LjIuMyDnlLvlg4/jga7lj5bjgormibHjgYTjga7nn6XopovjgYzjgarjgYTjga7jgaflibLmhJsKCgrjgb7jgaHjgYzjgaPjgabjgYTjgovlgIvmiYDjgoTjgoLjgaPjgajoia/jgYTmm7jjgY3mlrnjgYzjgYLjgozjgbBYKOaXp1R3aXR0ZXIp44GuW+engeOBruOCouOCq+OCpuODs+ODiF0oaHR0cHM6Ly90d2l0dGVyLmNvbS9ib2IzYm9iMynjgb7jgafjgYrnn6XjgonjgZvjgY/jgaDjgZXjgYTjgIIKCgoK</div>
 
 
 </div>
